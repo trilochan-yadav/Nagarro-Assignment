@@ -1,0 +1,36 @@
+<nav class="panel">
+    <div class="panel-heading">
+        <p>Angular Assignment</p>
+    </div>
+    <div class="panel-block" *ngIf="users.length > 0; else noUsers">
+        <table class="table is-bordered is-striped is-fullwidth">
+            <thead>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of users;index as i" >
+                    <td>{{ u.name }}</td>
+                    <td>{{ u.username }}</td>
+                    <td appHighlighter>{{ u.email }}</td>
+                    <td>
+                        <button class="button is-danger" (click)="handleDeleteUser(i)">
+                            Delete
+                          </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</nav>
+
+
+<ng-template #noUsers>
+    <nav class="panel">
+        <div class="panel-heading">
+            <p class="no-users tag is-warning">No Users Available.</p>
+        </div>
+    </nav>
+</ng-template>
